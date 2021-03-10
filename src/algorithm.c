@@ -5,7 +5,6 @@
 #define ARR_SIZE 11
 
 #include <aio.h>
-#include <dns_sd.h>
 #include <math.h>
 
 size_t** max_area(double *a, double *b) {
