@@ -1,6 +1,6 @@
 language: c
 dist: focal
-sudo: true
+sudo: required
 
 env:
   global:
