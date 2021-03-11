@@ -1,5 +1,6 @@
 language: c
 dist: focal
+sudo: true
 
 env:
   global:
