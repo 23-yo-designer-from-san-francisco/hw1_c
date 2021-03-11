@@ -15,22 +15,21 @@
 #include "include/algorithm.h"
 
 int main(int argc, char *argv[]) {
-
     if (argc < 7 || !(argc & 1)) {
-	printf("Enter two arrays of the same size\n");
-	return -1;
+        printf("Enter two arrays of the same size\n");
+        return -1;
     }
 
     size_t arr_size = (argc-1)/2;
-    
+
     double *a = (double*)malloc(sizeof(double)*(arr_size));
     double *b = (double*)malloc(sizeof(double)*(arr_size));
-    
+
     int half = argc/2;
 
     for (size_t i = 1; i <= half; ++i) {
-	sscanf(argv[i], "%lf", &a[i-1]);
-	sscanf(argv[i+half], "%lf", &b[i-1]);
+    sscanf(argv[i], "%lf", &a[i-1]);
+    sscanf(argv[i+half], "%lf", &b[i-1]);
     }
 
     size_t **result = max_area(a, b, half);
@@ -40,6 +39,5 @@ int main(int argc, char *argv[]) {
     free(a);
     free(b);
     free_result(result);
-    
 }
 
