@@ -1,3 +1,12 @@
 .idea/
 cmake-build-*/
 
+CMakeFiles
+gtest
+CMakeCache.txt
+CTestTestfile.cmake
+Makefile
+cmake_install.cmake
+Testing
+test/tests
+hw1

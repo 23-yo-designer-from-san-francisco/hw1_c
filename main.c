@@ -14,7 +14,7 @@
 
 #include "include/algorithm.h"
 
-int main() {
+int main(int argc, char *argv[]) {
     double a[] = {0, 0, 1, 0, 2, 3, 5, 6, 7, 8, 1231};
     double b[] = {0, 1, 0, 0, 0, -2, 5, -53, 12, 54, 5424};
 
