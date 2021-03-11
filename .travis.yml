@@ -1,10 +1,21 @@
 language: c
 dist: focal
+
+env:
+  - VALGRIND_OPTS='--leak-check=full --track-origins=yes'
+
+
+addons:
+  apt:
+      packages:
+          - valgrind
+
 compiler:
-    - clang
-    - gcc
+  - clang
+  - gcc
 
 script:
-    - cmake . && make
-
+  - cmake . && make
+  - valgrind ./untitled1 > valgrind.log 2>&1
+  - grep -q "no leaks are possible" valgrind.log
 
