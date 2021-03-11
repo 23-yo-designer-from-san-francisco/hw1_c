@@ -19,7 +19,11 @@ size_t** max_area(double *a, double *b) {
     for (size_t i = 0; i < ARR_SIZE - 2; ++i) {
         for (size_t j = i; j < ARR_SIZE - 1; ++j) {
             for (size_t k = j; k < ARR_SIZE; ++k) {
-                double area = fabs((a[i] - a[j]) * (b[i] - b[k]) - (a[i] - a[k]) * (b[i] - b[j])) / 2.0;
+                double area = fabs(
+                        (a[i] - a[j])
+                        * (b[i] - b[k])
+                        - (a[i] - a[k])
+                        * (b[i] - b[j])) / 2.0;
                 if (area > max) {
                     max = area;
                     *point1 = i;

@@ -15,8 +15,8 @@
 #include "include/algorithm.h"
 
 int main() {
-    double a[] = {0,0,1,0,2,3,5,6,7,8, 1231};
-    double b[] = {0,1,0,0,0,-2,5,-53,12,54, 5424};
+    double a[] = {0, 0, 1, 0, 2, 3, 5, 6, 7, 8, 1231};
+    double b[] = {0, 1, 0, 0, 0, -2, 5, -53, 12, 54, 5424};
 
     size_t **result = max_area(a, b);
 
