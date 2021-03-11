@@ -15,13 +15,31 @@
 #include "include/algorithm.h"
 
 int main(int argc, char *argv[]) {
-    double a[] = {0, 0, 1, 0, 2, 3, 5, 6, 7, 8, 1231};
-    double b[] = {0, 1, 0, 0, 0, -2, 5, -53, 12, 54, 5424};
 
-    size_t **result = max_area(a, b, (sizeof(a)/sizeof(a[0])));
+    if (argc < 7 || !(argc & 1)) {
+	printf("Enter two arrays of the same size\n");
+	return -1;
+    }
 
-    printf("%i %i %i\n", *result[0], *result[1], *result[2]);
+    size_t arr_size = (argc-1)/2;
+    
+    double *a = (double*)malloc(sizeof(double)*(arr_size));
+    double *b = (double*)malloc(sizeof(double)*(arr_size));
+    
+    int half = argc/2;
 
+    for (size_t i = 1; i <= half; ++i) {
+	sscanf(argv[i], "%lf", &a[i-1]);
+	sscanf(argv[i+half], "%lf", &b[i-1]);
+    }
+
+    size_t **result = max_area(a, b, half);
+
+    printf("%zu %zu %zu\n", *result[0], *result[1], *result[2]);
+
+    free(a);
+    free(b);
     free_result(result);
+    
 }
 

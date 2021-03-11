@@ -3,8 +3,8 @@
 #include <math.h>
 #include "../include/algorithm.h"
 
-size_t** max_area(const double *a, const double *b, const int ARR_SIZE) {
-    if (!a || !b) {
+size_t **max_area(const double *a, const double *b, const int ARR_SIZE) {
+    if (!a || !b || ARR_SIZE < 3) {
         return NULL;
     }
     double max = 0;
@@ -40,7 +40,7 @@ size_t** max_area(const double *a, const double *b, const int ARR_SIZE) {
     return result;
 }
 
-void free_result(int **result) {
+void free_result(size_t **result) {
     if (result) {
         for (size_t i = 0; i < 3; ++i) {
             free(result[i]);
@@ -48,3 +48,5 @@ void free_result(int **result) {
         free(result);
     }
 }
+
+
