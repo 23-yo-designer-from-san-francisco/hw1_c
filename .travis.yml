@@ -15,6 +15,7 @@ addons:
       - valgrind
       - python3
       - python3-pip
+      - cppcheck
 
 compiler:
    - clang
@@ -23,6 +24,8 @@ compiler:
 script:
    - pip3 install --user cpplint
    - cpplint $CPPLINT_FILTERS $CPPLINT_FILES
+
+   - cppcheck .
 
    - git clone https://github.com/google/googletest --depth=1
    - cd googletest && cmake . && make -j$(nproc) && make install
