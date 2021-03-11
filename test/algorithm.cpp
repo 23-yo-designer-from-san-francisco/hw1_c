@@ -5,7 +5,7 @@ extern "C" {
 }
 
 TEST(test_square, square) {
-    ASSERT_EQ(1, 1);
+    EXPECT_TRUE(max_area(NULL, NULL, 1) == NULL);
 }
 
 int main(int argc, char** argv) {

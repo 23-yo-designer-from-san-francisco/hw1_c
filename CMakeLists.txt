@@ -12,4 +12,3 @@ add_executable(hw1 main.c include/algorithm.h src/algorithm.c)
 enable_testing()
 
 add_subdirectory(test)
-
