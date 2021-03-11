@@ -14,7 +14,6 @@ addons:
       - valgrind
       - python3
       - python3-pip
-      - gtest
 
 compiler:
    - clang
@@ -24,6 +23,8 @@ script:
    - pip3 install --user cpplint
    - cpplint $CPPLINT_FILTERS $CPPLINT_FILES
 
+   - git clone https://github.com/google/googletest --depth=1
+   - cd googletest && cmake . && make -j$(nproc) && make install
    - cmake . && make
 
    - valgrind $VALGRIND_OPTS ./untitled1 > valgrind.log 2>&1
