@@ -1,11 +1,10 @@
-#define ARR_SIZE 11
-
 #include <stddef.h>
 #include <math.h>
+#include "../include/algorithm.h"
 
-size_t** max_area(double *a, double *b) {
+size_t** max_area(const double *a, const double *b, const int ARR_SIZE) {
     if (!a || !b) {
-        return 2;
+        return NULL;
     }
     double max = 0;
 
@@ -36,6 +35,11 @@ size_t** max_area(double *a, double *b) {
     return result;
 }
 
-int func(int x) {
-    return x * x;
+void free_result(int **result) {
+    if (result) {
+        for (size_t i = 0; i < 3; ++i) {
+            free(result[i]);
+        }
+        free(result);
+    }
 }
