@@ -4,21 +4,26 @@ dist: focal
 env:
   - VALGRIND_OPTS='--leak-check=full --track-origins=yes'
 
+  - CPPLINT_FILTERS='--filter=-readability/casting,-legal/copyright'
+  - CPPLINT_FILES='--recursive src/ include/ main.c'
 
 addons:
   apt:
     packages:
       - valgrind
-      - python
-      - python-pip
+      - python3
+      - python3-pip
 
 compiler:
   - clang
   - gcc
 
 script:
-  - pip install --user cpplint
+  - pip3 install --user cpplint
+  - cpplint $CPPLINT_FILTERS $CPPLINT_FILES
+
   - cmake . && make
-  - valgrind ./untitled1 > valgrind.log 2>&1
+
+  - valgrind $VALGRIND_OPTS ./untitled1 > valgrind.log 2>&1
   - grep -q "no leaks are possible" valgrind.log
 
