@@ -1,14 +1,12 @@
-//
-// Created by test on 10.03.2021.
-//
-
 #define ARR_SIZE 11
 
-#include <aio.h>
-#include <dns_sd.h>
+#include <stddef.h>
 #include <math.h>
 
 size_t** max_area(double *a, double *b) {
+    if (!a || !b) {
+        return 2;
+    }
     double max = 0;
 
     size_t **result = (size_t **)malloc(sizeof(size_t*) * 3);
@@ -36,4 +34,8 @@ size_t** max_area(double *a, double *b) {
     result[2] = point3;
 
     return result;
+}
+
+int func(int x) {
+    return x * x;
 }
