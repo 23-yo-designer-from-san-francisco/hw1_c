@@ -26,6 +26,6 @@ int main() {
         free(result[i]);
     }
 
-     free(result);
+    // free(result);
 }
 
