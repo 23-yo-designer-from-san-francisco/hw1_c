@@ -31,5 +31,6 @@ script:
    - cmake . && make && make test
 
    - valgrind $VALGRIND_OPTS ./hw1 > valgrind.log 2>&1
+   - cat valgrind.log
    - grep -q "no leaks are possible" valgrind.log
 
