@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-	#include "algorithm.c"
+    #include "algorithm.h"
 }
 
 TEST(max_area, nullptr) {
@@ -18,7 +18,7 @@ TEST(max_area, wrong_length) {
 TEST(max_area, result1) {
     double a[] = {0, 0, 1, 0, 2, 3, 5, 6, 7, 8, 1231};
     double b[] = {0, 1, 0, 0, 0, -2, 5, -53, 12, 54, 5424};
-    
+
     size_t **result = max_area(a, b, sizeof(a)/sizeof(a[0]));
 
     EXPECT_EQ(*result[0], 7);

@@ -6,7 +6,7 @@ env:
     - VALGRIND_OPTS='--leak-check=full --track-origins=yes'
 
     - CPPLINT_FILTERS='--filter=-readability/casting,-legal/copyright'
-    - CPPLINT_FILES='--recursive src/ include/ main.c'
+    - CPPLINT_FILES='--recursive src/ include/ main.c test/algorithm.cpp'
 
 addons:
    apt:
