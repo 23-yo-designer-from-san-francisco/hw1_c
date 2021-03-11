@@ -7,14 +7,17 @@ env:
 
 addons:
   apt:
-      packages:
-          - valgrind
+    packages:
+      - valgrind
+      - python
+      - python-pip
 
 compiler:
   - clang
   - gcc
 
 script:
+  - pip install --user cpplint
   - cmake . && make
   - valgrind ./untitled1 > valgrind.log 2>&1
   - grep -q "no leaks are possible" valgrind.log

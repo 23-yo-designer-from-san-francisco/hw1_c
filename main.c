@@ -23,7 +23,7 @@ int main() {
     printf("%i %i %i\n", *result[0], *result[1], *result[2]);
 
     for (size_t i = 0; i < 3; ++i) {
-        // free(result[i]);
+        free(result[i]);
     }
 
     free(result);
