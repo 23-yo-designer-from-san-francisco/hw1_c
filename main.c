@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
 
     size_t **result = max_area(a, b, half);
 
-    printf("%zu %zu %zu\n", *result[0], *result[1], *result[2]);
+    printf("%zu %zu %zu\n", *result[0]+1, *result[1]+1, *result[2]+1);
 
     free(a);
     free(b);
