@@ -19,7 +19,6 @@ addons:
       - g++-10
 
 compiler:
-   - clang
    - gcc
 
 script:
