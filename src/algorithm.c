@@ -15,6 +15,11 @@ size_t **max_area(const double *a, const double *b, const int ARR_SIZE) {
     size_t *point2 = (size_t*)malloc(sizeof(size_t));
     size_t *point3 = (size_t*)malloc(sizeof(size_t));
 
+    if (!result || !point1 || !point2 || !point3) {
+	printf("Memory allocation error");
+	return NULL;
+    }
+
     for (size_t i = 0; i < ARR_SIZE - 2; ++i) {
         for (size_t j = i; j < ARR_SIZE - 1; ++j) {
             for (size_t k = j; k < ARR_SIZE; ++k) {

@@ -19,7 +19,12 @@ int main(int argc, char *argv[]) {
 
     double *a = (double*)malloc(sizeof(double)*(arr_size));
     double *b = (double*)malloc(sizeof(double)*(arr_size));
-
+   
+    if (!a || !b) {
+        printf("Memory was not allocated");
+        return -1;
+    }
+		
     int half = argc/2;
 
     for (size_t i = 1; i <= half; ++i) {
@@ -31,6 +36,11 @@ int main(int argc, char *argv[]) {
     }
 
     size_t **result = max_area(a, b, half);
+	
+    if (!result) {
+	printf("Function returned nothing");
+        return -1;
+    }    
 
     printf("%zu %zu %zu\n", *result[0]+1, *result[1]+1, *result[2]+1);
 
