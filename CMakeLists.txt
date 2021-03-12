@@ -49,7 +49,7 @@ include_directories(
     "${PROJECT_SOURCE_DIR}/src"
 )
 
-add_executable(tests test/algorithm.cpp)
+add_executable(tests test/algorithm.cpp src/algorithm.c)
 target_link_libraries(
     tests
     libgtest
