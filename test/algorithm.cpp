@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 
 extern "C" {
-    #include "algorithm.h"
+    #include "algorithm.c"
 }
 
 TEST(max_area, nullptr) {
