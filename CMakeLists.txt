@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 project(hw1 C CXX)
 
-set(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_BUILD_TYPE Debug)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_COMPILER "gcc-10")
