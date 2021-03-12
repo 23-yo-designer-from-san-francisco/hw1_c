@@ -23,7 +23,8 @@ int main(int argc, char *argv[]) {
     int half = argc/2;
 
     for (size_t i = 1; i <= half; ++i) {
-        if (!((sscanf(argv[i], "%lf", &a[i-1]) == 1) && (sscanf(argv[i+half], "%lf", &b[i-1]) == 1))) {
+        if (!((sscanf(argv[i], "%lf", &a[i-1]) == 1)
+            && (sscanf(argv[i+half], "%lf", &b[i-1]) == 1))) {
             printf("Unknown character in input string\n");
             return -1;
         }
