@@ -9,6 +9,10 @@ set(CMAKE_CXX_COMPILER "g++-10")
 
 set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -fno-omit-frame-pointer -g -fsanitize=leak,undefined")
 
+set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+set(CMAKE_C_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+
+
 enable_testing()
 
 find_package(Threads REQUIRED)
@@ -57,7 +61,8 @@ target_link_libraries(
 )
 
 					    
-add_executable(hw1 main.c include/algorithm.h src/algorithm.c)
+add_executable(hw1 main.c include/algorithm.h src/algorithm.c include/io.h src/io.c)
+
 
 target_link_libraries(hw1 -lpthread ${GTEST_LIBRARIES})
 

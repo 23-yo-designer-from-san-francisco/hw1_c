@@ -5,8 +5,8 @@ env:
   global:
     - VALGRIND_OPTS='--leak-check=full --track-origins=yes'
 
-    - CPPLINT_FILTERS='--filter=-readability/casting,-legal/copyright'
-    - CPPLINT_FILES='--recursive src/ include/ main.c test/algorithm.cpp'
+    - CPPLINT_FILTERS='--filter=-readability/casting,-legal/copyright,-build/include_subdir,-whitespace/line_length'
+    - CPPLINT_FILES='--recursive src/ include/ main.c test/'
 
 addons:
    apt:

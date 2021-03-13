@@ -4,48 +4,31 @@
 На выход функция должна вернуть массив указателей из трех элементов
 на номера точек, образующих найденный треугольник.*/
 
-#include <stdio.h>
 #include <stdlib.h>
 
-#include "include/algorithm.h"
+#include "algorithm.h"
+#include "io.h"
 
-int main(int argc, char *argv[]) {
-    if (argc < 7 || !(argc & 1)) {
-        printf("Enter two arrays of the same size\n");
-        return -1;
+#define INPUT_ERROR 300
+#define CALCULATION_ERROR 302
+
+int main() {
+    size_t *arr_size = (size_t *)malloc(sizeof(size_t));
+
+    double **data = input(arr_size);
+    if (!data) {
+        return INPUT_ERROR;
     }
 
-    size_t arr_size = (argc-1)/2;
-
-    double *a = (double*)malloc(sizeof(double)*(arr_size));
-    double *b = (double*)malloc(sizeof(double)*(arr_size));
-
-    if (!a || !b) {
-        printf("Memory was not allocated");
-        return -1;
-    }
-
-    int half = argc/2;
-
-    for (size_t i = 1; i <= half; ++i) {
-        if (!((sscanf(argv[i], "%lf", &a[i-1]) == 1)
-            && (sscanf(argv[i+half], "%lf", &b[i-1]) == 1))) {
-            printf("Unknown character in input string\n");
-            return -1;
-        }
-    }
-
-    size_t **result = max_area(a, b, half);
+    size_t **result = get_max_triangle(data[0], data[1], *arr_size);
 
     if (!result) {
-        printf("Function returned nothing");
-        return -1;
+        return CALCULATION_ERROR;
     }
 
-    printf("%zu %zu %zu\n", *result[0]+1, *result[1]+1, *result[2]+1);
+    print(result);
 
-    free(a);
-    free(b);
+    free_input(data);
     free_result(result);
+    free(arr_size);
 }
-
