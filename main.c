@@ -20,7 +20,7 @@ int main() {
         return INPUT_ERROR;
     }
 
-    size_t **result = get_max_triangle(data[0], data[1], arr_size);
+    size_t *result = get_max_triangle(data[0], data[1], arr_size);
 
     if (!result) {
         return CALCULATION_ERROR;
@@ -29,5 +29,5 @@ int main() {
     print(result);
 
     free_input(data);
-    free_result(result);
+    free(result);
 }

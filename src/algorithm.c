@@ -7,38 +7,15 @@
 #define MIN_ARR_SIZE 3
 #define RESULT_ARR_SIZE 3
 
-size_t **get_max_triangle(const double *x, const double *y, const size_t ARR_SIZE) {
+size_t *get_max_triangle(const double *x, const double *y, const size_t ARR_SIZE) {
     if (!x || !y || ARR_SIZE < MIN_ARR_SIZE) {
         return NULL;
     }
     double max = 0;
 
-    size_t **result = (size_t **)malloc(sizeof(size_t *) * RESULT_ARR_SIZE);
+    size_t *result = (size_t *)malloc(sizeof(size_t *) * RESULT_ARR_SIZE);
     if (!result) {
         printf("Ошибка выделения памяти\n");
-        return NULL;
-    }
-
-    size_t *point1 = (size_t*)malloc(sizeof(size_t));
-    if (!point1) {
-        printf("Ошибка выделения памяти\n");
-        free(result);
-        return NULL;
-    }
-    size_t *point2 = (size_t*)malloc(sizeof(size_t));
-    if (!point2) {
-        printf("Ошибка выделения памяти\n");
-        free(result);
-        free(point1);
-        return NULL;
-    }
-
-    size_t *point3 = (size_t*)malloc(sizeof(size_t));
-    if (!point3) {
-        printf("Ошибка выделения памяти\n");
-        free(result);
-        free(point1);
-        free(point2);
         return NULL;
     }
 
@@ -52,28 +29,13 @@ size_t **get_max_triangle(const double *x, const double *y, const size_t ARR_SIZ
                         * (y[i] - y[j])) / 2.0;
                 if (area > max) {
                     max = area;
-                    *point1 = i;
-                    *point2 = j;
-                    *point3 = k;
+                    result[0] = i;
+                    result[1] = j;
+                    result[2] = k;
                 }
             }
         }
     }
 
-    result[0] = point1;
-    result[1] = point2;
-    result[2] = point3;
-
     return result;
 }
-
-void free_result(size_t **result) {
-    if (result) {
-        for (size_t i = 0; i < RESULT_ARR_SIZE; ++i) {
-            free(result[i]);
-        }
-        free(result);
-    }
-}
-
-

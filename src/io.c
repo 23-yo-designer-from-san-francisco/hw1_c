@@ -79,10 +79,10 @@ double **input(size_t *arr_size) {
     return arrays;
 }
 
-void print(size_t **result) {
+void print(size_t *result) {
     printf("Треугольник с наибольшей площадью можно составить из точек с номерами: ");
     for (size_t i = 0; i < RESULT_ARR_SIZE; ++i) {
-        printf("%zu ", *result[i]);
+        printf("%zu ", result[i]);
     }
     printf("\n");
 }
