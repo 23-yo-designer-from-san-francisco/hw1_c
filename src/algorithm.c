@@ -13,14 +13,32 @@ size_t **get_max_triangle(const double *x, const double *y, const size_t ARR_SIZ
     }
     double max = 0;
 
-    size_t **result = (size_t **)malloc(sizeof(size_t *) * 3);
+    size_t **result = (size_t **)malloc(sizeof(size_t *) * RESULT_ARR_SIZE);
+    if (!result) {
+        printf("Ошибка выделения памяти\n");
+        return NULL;
+    }
 
     size_t *point1 = (size_t*)malloc(sizeof(size_t));
+    if (!point1) {
+        printf("Ошибка выделения памяти\n");
+        free(result);
+        return NULL;
+    }
     size_t *point2 = (size_t*)malloc(sizeof(size_t));
-    size_t *point3 = (size_t*)malloc(sizeof(size_t));
+    if (!point2) {
+        printf("Ошибка выделения памяти\n");
+        free(result);
+        free(point1);
+        return NULL;
+    }
 
-    if (!result || !point1 || !point2 || !point3) {
-        printf("Memory allocation error");
+    size_t *point3 = (size_t*)malloc(sizeof(size_t));
+    if (!point3) {
+        printf("Ошибка выделения памяти\n");
+        free(result);
+        free(point1);
+        free(point2);
         return NULL;
     }
 

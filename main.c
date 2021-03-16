@@ -13,14 +13,14 @@
 #define CALCULATION_ERROR 302
 
 int main() {
-    size_t *arr_size = (size_t *)malloc(sizeof(size_t));
+    size_t arr_size;
 
-    double **data = input(arr_size);
+    double **data = input(&arr_size);
     if (!data) {
         return INPUT_ERROR;
     }
 
-    size_t **result = get_max_triangle(data[0], data[1], *arr_size);
+    size_t **result = get_max_triangle(data[0], data[1], arr_size);
 
     if (!result) {
         return CALCULATION_ERROR;
@@ -30,5 +30,4 @@ int main() {
 
     free_input(data);
     free_result(result);
-    free(arr_size);
 }
