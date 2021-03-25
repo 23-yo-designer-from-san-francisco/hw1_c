@@ -1,0 +1,35 @@
+language: c
+dist: focal
+
+env:
+  global:
+    - VALGRIND_OPTS='--leak-check=full --track-origins=yes'
+
+    - CPPLINT_FILTERS='--filter=-readability/casting,-legal/copyright,-build/include_subdir,-whitespace/line_length'
+    - CPPLINT_FILES='--recursive src/ include/ main.c test/'
+
+addons:
+   apt:
+     packages:
+      - valgrind
+      - python3
+      - python3-pip
+      - cppcheck
+      - gcc-10
+      - g++-10
+
+compiler:
+   - gcc
+
+script:
+   - pip3 install --user cpplint
+   - cpplint $CPPLINT_FILTERS $CPPLINT_FILES
+
+   - cppcheck .
+
+   - cmake . && make && make test
+
+   - valgrind $VALGRIND_OPTS ./hw1 < test.txt > valgrind.log 2>&1
+   - cat valgrind.log
+   - grep -q "no leaks are possible" valgrind.log
+
